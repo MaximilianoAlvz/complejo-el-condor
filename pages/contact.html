@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="../styles/style.css">
     <title>Complejo "El condor"</title>
 </head>
@@ -36,22 +37,34 @@
 
     </header>
 
-    <main class="mainContacto">
+    <main class="mainContacto" data-aos="zoom-out">
         
         <section class="formContacto">
             <div class="cajaFormulario">
                 <h1>CONTACTANOS</h1>
                 <form class="formulario">
                     <label for="nombre">NOMBRE COMPLETO:</label>
-                    <input type="text" required>
-                    <label for="mail">INGRESA UN CORREO ELECTRONICO</label>
-                    <input type="email" required>
+                    <input type="text" class="respuesta" required>
+                    <label for="mail">INGRESA UN CORREO ELECTRONICO:</label>
+                    <input type="email" class="respuesta" required>
                     <label for="numero">INDICA TU NUMERO TELEFONICO:</label>
-                    <input type="tel" required>
+                    <input type="tel" required class="respuesta">
                     <label for="consulta">DEJA AQUI TU CONSULTA:</label>
-                    <textarea name="consulta" cols="30" rows="10" required></textarea>
-                    <input type="submit" value="Envia tu consulta">
+                    <textarea name="consulta" cols="30" rows="10" class="respuesta" required></textarea>
+                    <input type="submit" value="Envia tu consulta" class="botonConsulta">
                 </form>
+            </div>
+            <div class="redes">
+                <h2>TAMBIEN PUEDES CONTACTARNOS EN NUESTRAS REDES:</h2>
+                <a href="https://www.instagram.com/" target="_blank">
+                    <img src="../img/iconos/instagram.svg" alt="logo de instagram" class="icon">
+                </a>
+                <a href="https://es-la.facebook.com/" target="_blank">
+                    <img src="../img/iconos/facebook.svg" alt="logo de facebook" class="icon">
+                </a>
+                <a href="https://twitter.com/home" target="_blank">
+                    <img src="../img/iconos/twitter.svg" alt="logo de twitter" class="icon">
+                </a>
             </div>
         </section>
 
@@ -60,6 +73,10 @@
     <footer>
 
     </footer>
-    
+    <!-- scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>    
 </body>
 </html>
