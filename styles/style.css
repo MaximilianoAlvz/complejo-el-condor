@@ -25,7 +25,7 @@ body {
     background-attachment: fixed;
     width: 100vw;
     height: 100vh;
-    grid-template-columns: 80px auto 80px;
+    grid-template-columns: 0.5fr auto 0.5fr;
     grid-template-rows: 50px auto 40px;
     grid-template-areas: 
     "nav nav nav"
@@ -68,9 +68,11 @@ body {
     height: 50px;
     background-color: #4a2525;
     font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
 
 }
 .barraNavegacion ul li {
+
     padding: 7px 20px;
     color: rgb(255, 255, 255);
 }
@@ -101,7 +103,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 32px;
+    font-size: 2em;
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
     color: white;
