@@ -30,7 +30,7 @@ body {
     width: 100%;
     height: 100%;
     grid-template-columns: 0.5fr auto 0.5fr;
-    grid-template-rows: 50px auto 40px;
+    grid-template-rows: 70px auto 40px;
     grid-template-areas: 
     "nav nav nav"
     "main main main"
@@ -38,52 +38,26 @@ body {
     overflow-x: hidden;
 }
 /* codigo de la barra de navegacion */
-.boton1 {
-    grid-area: b1;
-}
-.boton2 {
-    grid-area: b2;
-}
-.boton3 {
-    grid-area: b3;
-}
-.boton4 {
-    grid-area: b4;
-}
-.boton5 {
-    grid-area: b5;
-}
 .logo {
-    grid-area: logo;
+    height: 40px;
+    width: auto;
 }
-.logo img {
-    height: 30px;
-    width:auto;
+.navbar {
+    background-color: #4a2525 ;
 }
-.barraNavegacion ul {
-    list-style: none;
-    display: grid;
-    grid-template-areas: ". logo . b1 b2 b3 b4 b5 .";
-    grid-template-columns: repeat(9, 1fr);
-    justify-items: stretch;
-    text-align: center;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    background-color: #4a2525;
-    font-family: 'Oswald', sans-serif;
+.nav-ul li a {
+    color: white    ;
+}
+.navbar-nav .nav-link{
     text-transform: uppercase;
-
+    font-family: 'Oswald', sans-serif;
 }
-.barraNavegacion ul li {
-
-    padding: 7px 20px;
-    color: rgb(255, 255, 255);
+.navbar-nav .nav-link.active {
+    color: white;
 }
-
-.barraNavegacion ul li:hover {
-    background-color:  #ffffff22;
-    border-radius: 4px;
+.navbar-nav .nav-link:hover{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.445);
 }
 /* css index */
 .mainIndex {
@@ -226,14 +200,20 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: auto;
+    height: 80%;
     gap: 0.3em;
 }
 .formulario .respuesta{
     width: 80%;
 }
-.cajaFormulario h1 {
+.formulario .respuesta {
+    width: 80%;
+}
+
+.tituloContacto {
     font-size: 3em;
+    height: auto;
+
 }
 .botonConsulta {
     width: 80%;
@@ -265,6 +245,8 @@ body {
     width: 80px;
     height: 80px;
 }   
+/* CSS RESERVA */
+
 /* footer */
 
 footer {
@@ -273,6 +255,9 @@ footer {
     bottom: 0;
 }
 @media screen and (max-width: 992px) {
+    body {
+        grid-template-rows: auto 100% 40px;
+    }
     .presentacion {
         flex-direction: column;
     }
@@ -290,15 +275,6 @@ footer {
 @media screen and (max-width: 768px) {
     .titulo {
         font-size: 2.5em;
-    }
-    body {
-        grid-template-rows: 100px 100% 40px;
-    }
-    .barraNavegacion ul {
-        height: 100px;
-        grid-template-areas: 
-        "logo logo logo logo logo logo logo logo logo"
-        ". . b1 b2 b3 b4 b5 . .";
     }
     .rooms {
         height: auto;
@@ -321,10 +297,11 @@ footer {
     .formContacto { 
         flex-direction: column;
         justify-content: space-evenly;
+        gap: 0;
     }
     .cajaFormulario {
         width: 80%;
-        height: 60%;
+        height: 70%;
     }
     .redes {
         flex-direction: row;
