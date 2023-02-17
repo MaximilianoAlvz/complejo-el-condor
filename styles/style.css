@@ -98,6 +98,7 @@ body {
     width: 100%;
     height: 100%;
     margin-bottom: 1em;
+    overflow: hidden;
 }
 .titulo-habitaciones {
     color: white;
@@ -228,15 +229,18 @@ body {
 footer {
     background-color: black;
     width: 100%;
-    bottom: 0;
+    height: 40px;
 }
 
 /* Comienzo de las medias para generar el responsive */
 @media screen and (max-width: 992px) {
     /* modificacion para que funcione la barra */
    body {
-    grid-template-rows: auto auto 40px;
+    grid-template-rows: auto 4fr auto;
    }
+   /* .mainIndex {
+    position: absolute;
+   } */
 
    .navbar {
     height: auto;
