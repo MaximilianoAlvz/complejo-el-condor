@@ -44,6 +44,7 @@ body {
 }
 .navbar {
     background-color: #4a2525 ;
+    height: 70px;
 }
 .nav-ul li a {
     color: white    ;
@@ -81,68 +82,43 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 2em;
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
     color: white;
     text-shadow: 0px 0px 10px black;
 }
-/* Css History   */
-.tituloHabitaciones {
-    grid-area: tituloH;
+.tamaño-titulo {
+    font-size: 3.5em;
 }
-.cocina {
-    grid-area: cocina
-}
-.baño {
-    grid-area: baño;
-}
-.habitacionPrincipal {
-    grid-area: principal;
-}
-.habitacionA {
-    grid-area: hA;
-}
-.habitacionB {
-    grid-area: hB;
-}
-.mainHistory {
-    width: 100%;
-    min-height: 100%;
+/* Css History  */
+.main-history {
+    height: 100%;
 }
 .habitaciones {
-    height: 100%;
     width: 100%;
-    font-family: 'Oswald', sans-serif;
-    display: grid;
-    grid-template-areas: 
-    "tituloH tituloH tituloH tituloH tituloH"
-    "cocina principal hA hB baño"
-    ;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 0.3fr 1fr;
-    justify-items: center;
-    align-items: center;
+    height: 100%;
+    margin-bottom: 1em;
+}
+.titulo-habitaciones {
     color: white;
+    font-size: 2rem;
     text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    margin: 1em 0px 1em 0px;
 }
-.habitacion {
-    width: 80%;
-    height: 80%;
-    background-color: rgba(82, 76, 76, 0.584);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 15%;
-
+.card {
+    background-color: rgba(0, 0, 0, 0.578);
 }
-
-.habitaciones img {
-    width: 80%;
-    height: 60%;
+.titulo-foto {
+    color: white;
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: 650;
 }
-
+.card-text {
+    color: white;
+}
 /* css como llegar */
 .ubicacion {
     width: 100%;
@@ -254,10 +230,17 @@ footer {
     width: 100%;
     bottom: 0;
 }
+
+/* Comienzo de las medias para generar el responsive */
 @media screen and (max-width: 992px) {
-    body {
-        grid-template-rows: auto 100% 40px;
-    }
+    /* modificacion para que funcione la barra */
+   body {
+    grid-template-rows: auto auto 40px;
+   }
+   .navbar {
+    height: auto;
+   }
+    /* modificacion al index */
     .presentacion {
         flex-direction: column;
     }
@@ -268,32 +251,25 @@ footer {
     .imgTitulo img {
         width: 80%;
     }
-    .titulo {
+    .tamaño-titulo {
         font-size: 3em;
     }
-}
-@media screen and (max-width: 768px) {
-    .titulo {
-        font-size: 2.5em;
-    }
+    /* modificacion a rooms */
     .rooms {
         height: auto;
     }
-    .habitaciones {
-        grid-template-areas: 
-        "tituloH"
-        "cocina"
-        "principal"
-        "hA"
-        "hB"
-        "baño"
-        ;
-        grid-template-columns: auto;
-        grid-template-rows: 0.3fr repeat(5, 1fr);
+    .main-history {
+        height: auto;
     }
-    .habitacion {
-        height: 90%;
+}
+@media screen and (max-width: 768px) {
+   /* nueva modificacion al index */
+    .tamaño-titulo {
+        font-size: 2.5em;
     }
+    /* modificacion al page rooms */
+    
+    /* Modificacion al page contact */
     .formContacto { 
         flex-direction: column;
         justify-content: space-evenly;
