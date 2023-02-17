@@ -11,7 +11,7 @@ header{
     grid-area: nav;
 }
 main {
-    grid-area: main
+    grid-area: main;
 }
 footer {
     grid-area: footer;
@@ -237,6 +237,7 @@ footer {
    body {
     grid-template-rows: auto auto 40px;
    }
+
    .navbar {
     height: auto;
    }
@@ -249,7 +250,8 @@ footer {
         justify-content: center;
     }
     .imgTitulo img {
-        width: 80%;
+        width: 70%;
+        height: auto;
     }
     .tamaño-titulo {
         font-size: 3em;
