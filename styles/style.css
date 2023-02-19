@@ -31,7 +31,7 @@ body {
     width: 100%;
     height: 100%;
     grid-template-columns: 0.5fr auto 0.5fr;
-    grid-template-rows: 70px auto 40px;
+    grid-template-rows: auto 4fr auto;
     grid-template-areas: 
     "nav nav nav"
     "main main main"
@@ -173,26 +173,20 @@ body {
     align-items: center;
     justify-content: space-evenly;
 }
-.formulario {
+ .formulario {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 2%;
     width: 100%;
     height: 80%;
-    gap: 0.3em;
 }
 .formulario .respuesta{
     width: 80%;
 }
-.formulario .respuesta {
-    width: 80%;
-}
-
 .tituloContacto {
-    font-size: 3em;
-    height: auto;
-
+    font-size: 2.5em;
 }
 .botonConsulta {
     width: 80%;
@@ -212,18 +206,18 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 3%;
+    gap: 2%;
     background-color: rgba(42, 42, 35, 0.562);
     border-radius: 2em;
 }
 .redes h2 {
-    font-size: 1em;
+    font-size: 1.5em;
     text-align: center;
 }
 .icon {
     width: 80px;
     height: 80px;
-}   
+} 
 /* CSS RESERVA */
 
 /* footer */
