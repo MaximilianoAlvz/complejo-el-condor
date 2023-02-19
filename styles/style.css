@@ -11,22 +11,27 @@ header{
     grid-area: nav;
 }
 main {
-    grid-area: main
+    grid-area: main;
 }
 footer {
     grid-area: footer;
 }
 
+html {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
 body {
     display: grid;
     background-image: url(../img/fondo.avif);
     background-repeat: no-repeat;
-    background-size: 100vw 100vh;
+    background-size: 100% 100%;
     background-attachment: fixed;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     grid-template-columns: 0.5fr auto 0.5fr;
-    grid-template-rows: 50px auto 40px;
+    grid-template-rows: auto 4fr auto;
     grid-template-areas: 
     "nav nav nav"
     "main main main"
@@ -34,52 +39,27 @@ body {
     overflow-x: hidden;
 }
 /* codigo de la barra de navegacion */
-.boton1 {
-    grid-area: b1;
-}
-.boton2 {
-    grid-area: b2;
-}
-.boton3 {
-    grid-area: b3;
-}
-.boton4 {
-    grid-area: b4;
-}
-.boton5 {
-    grid-area: b5;
-}
 .logo {
-    grid-area: logo;
+    height: 40px;
+    width: auto;
 }
-.logo img {
-    height: 30px;
-    width:auto;
+.navbar {
+    background-color: #4a2525 ;
+    height: 70px;
 }
-.barraNavegacion ul {
-    list-style: none;
-    display: grid;
-    grid-template-areas: ". logo . b1 b2 b3 b4 b5 .";
-    grid-template-columns: repeat(9, 1fr);
-    justify-items: stretch;
-    text-align: center;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    background-color: #4a2525;
-    font-family: 'Oswald', sans-serif;
+.nav-ul li a {
+    color: white    ;
+}
+.navbar-nav .nav-link{
     text-transform: uppercase;
-
+    font-family: 'Oswald', sans-serif;
 }
-.barraNavegacion ul li {
-
-    padding: 7px 20px;
-    color: rgb(255, 255, 255);
+.navbar-nav .nav-link.active {
+    color: white;
 }
-
-.barraNavegacion ul li:hover {
-    background-color:  #ffffff22;
-    border-radius: 4px;
+.navbar-nav .nav-link:hover{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.445);
 }
 /* css index */
 .mainIndex {
@@ -87,14 +67,14 @@ body {
     width: 100%;
 }
 .presentacion {
-    height: 100%;
+    min-height: 100%;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
 }
-.img-titulo img{
+.imgTitulo img{
     width: 40vw;
     box-shadow: 0px 0px 50px black;
     }
@@ -103,75 +83,43 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 2em;
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
     color: white;
     text-shadow: 0px 0px 10px black;
 }
-/* Css History   */
-.habitaciones {
-    grid-area: habitaciones;
-    font-family: 'Oswald', sans-serif;
-
+.tamaño-titulo {
+    font-size: 3.5em;
 }
-.mainHistory{
+/* Css History  */
+.main-history {
     height: 100%;
+}
+.habitaciones {
     width: 100%;
-    overflow:hidden;
-}
-.habitaciones {
-    width: 100vw;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 30px;
-    align-items: center;
-    color: white;
+    margin-bottom: 1em;
     overflow: hidden;
 }
-.habitacion {
-    display: flex;
-    height: 300px;
-    width: 200px;
-    background-color: rgba(128, 128, 128, 0.5);
-    border-radius: 20px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: all 2s;
+.titulo-habitaciones {
+    color: white;
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    margin: 1em 0px 1em 0px;
 }
-.iconosHabitaciones {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
+.card {
+    background-color: rgba(0, 0, 0, 0.578);
 }
-.habitacion img {
-    width: 150px;
-    height: 200px;
-    transition: all 2s;
+.titulo-foto {
+    color: white;
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: 650;
 }
-.iconosHabitaciones  h2 {
-    font-size: 20px;
-}
-.habitacion h3 {
-    font-size: 15px;
-    transition: all 3s;
-}
-
-.habitacion:hover {
-    height: 350px;
-    width: 300px;
-}
-.habitacion:hover img{
-    width: 250px;
-    height: 250px;
-}
-.habitacion:hover h3 {
-    font-size: 20px;
+.card-text {
+    color: white;
 }
 /* css como llegar */
 .ubicacion {
@@ -197,6 +145,7 @@ body {
 .mapa {
     width: 80%;
     height: 70%;
+    margin-bottom: 1em;
 }
 .mapa iframe {
     height: 100%;
@@ -224,20 +173,20 @@ body {
     align-items: center;
     justify-content: space-evenly;
 }
-.formulario {
+ .formulario {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 2%;
     width: 100%;
-    height: auto;
-    gap: 0.3em;
+    height: 80%;
 }
 .formulario .respuesta{
     width: 80%;
 }
-.cajaFormulario h1 {
-    font-size: 3em;
+.tituloContacto {
+    font-size: 2.5em;
 }
 .botonConsulta {
     width: 80%;
@@ -257,23 +206,84 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 3%;
+    gap: 2%;
     background-color: rgba(42, 42, 35, 0.562);
     border-radius: 2em;
 }
 .redes h2 {
-    font-size: 1em;
+    font-size: 1.5em;
     text-align: center;
 }
 .icon {
     width: 80px;
     height: 80px;
-}   
+} 
+/* CSS RESERVA */
+
 /* footer */
 
 footer {
     background-color: black;
     width: 100%;
-    display: block;
-    bottom: 0;
+    height: 40px;
+}
+
+/* Comienzo de las medias para generar el responsive */
+@media screen and (max-width: 992px) {
+    /* modificacion para que funcione la barra */
+   body {
+    grid-template-rows: auto 4fr auto;
+   }
+
+   .navbar {
+    height: auto;
+   }
+    /* modificacion al index */
+    .presentacion {
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .imgTitulo {
+        display: flex;
+        justify-content: center;
+    }
+    .imgTitulo img {
+        width: 70%;
+        margin: 1em 0;
+    }
+    .tamaño-titulo {
+        font-size: 3em;
+    }
+    /* modificacion a rooms */
+    .rooms {
+        height: auto;
+    }
+    .main-history {
+        height: auto;
+    }
+}
+@media screen and (max-width: 768px) {
+   /* nueva modificacion al index */
+    .tamaño-titulo {
+        font-size: 2.5em;
+    }
+    /* Modificacion al page contact */
+    .formContacto { 
+        flex-direction: column;
+        justify-content: space-evenly;
+        gap: 0;
+    }
+    .cajaFormulario {
+        width: 80%;
+        height: 70%;
+    }
+    .redes {
+        flex-direction: row;
+        height: 20%;
+        width: 80%;
+    }
+    .icon {
+        width: 40px;
+        height: 40px;
+    }
 }
