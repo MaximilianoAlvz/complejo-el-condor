@@ -297,5 +297,6 @@ footer {
  /* modificacion a location */
  .ubicacion-texto p {
     font-size: 1em;
+    text-align: center;
  }
 }
