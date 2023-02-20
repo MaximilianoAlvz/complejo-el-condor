@@ -289,7 +289,7 @@ footer {
 }
 @media screen and (max-width:576px) {
     .tamaño-titulo {
-        font-size: 3em;
+        font-size: 2em;
     }
     .img-titulo img {
     width: 90%;
