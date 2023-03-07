@@ -1,0 +1,23 @@
+.logo {
+    height: 40px;
+    width: auto;
+}
+.navbar {
+    background-color: #4a2525 ;
+    height: 70px;
+}
+.nav-ul li a {
+    color: white    ;
+}
+.navbar-nav .nav-link {
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+
+    &.active {
+        color: white;
+    }
+    &:hover {
+        color: white;
+        background-color: rgba(0, 0, 0, 0.445);
+    }
+}
