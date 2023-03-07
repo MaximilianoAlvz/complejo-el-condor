@@ -1,33 +1,73 @@
 /*css index*/
-        .main-index {
+.body-index {
+    height: 210%;
+    width: 100%;
+    grid-template-columns: 4fr;
+    grid-template-rows: auto 4fr 100vh auto;
+    grid-template-areas: 
+    "nav nav nav"
+    "main main main"
+    "main main main"
+    "footer footer footer";
+
+    .main-index {
+        height: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-rows: 4fr 100vh;
+
+
+        .presentacion {
             height: 100%;
             width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
 
-            .presentacion {
-                height: 100%;
-                width: 100%;
+            .img-titulo img {
+                width: 40vw;
+                box-shadow: 0px 0px 50px black;
+            }
+
+            .titulo {
                 display: flex;
-                flex-direction: row;
-                justify-content: space-evenly;
+                flex-direction: column;
+                justify-content: center;
                 align-items: center;
+                font-family: 'Oswald', sans-serif;
+                text-transform: uppercase;
+                color: white;
+                text-shadow: 0px 0px 10px black;
 
-                    .img-titulo img {
-                        width: 40vw;
-                        box-shadow: 0px 0px 50px black;
+                .tamaño-titulo {
+                    font-size: 3.5em;
                 }
-                    .titulo {
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        font-family: 'Oswald', sans-serif;
-                        text-transform: uppercase;
-                        color: white;
-                        text-shadow: 0px 0px 10px black;
-
-                            .tamaño-titulo {
-                                font-size: 3.5em;
-                            }
-                    }
-            } 
+            }
         }
+        .actividades {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #4a2525;
+                h3 {
+                    font-weight: 700;
+                    color: white;
+                    margin-top: 1em;
+                    text-transform: uppercase;
+                }
+                .contenido-actividades {
+                    height: 100%;
+                    gap: 1em;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-wrap: wrap;
+                        .card {
+                            width: 22%;
+                            height: 90%;
+                        }
+                }
+        }
+    }
+}
