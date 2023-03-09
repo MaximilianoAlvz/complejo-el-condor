@@ -155,4 +155,12 @@
     .ubicacion-texto p {
     font-size: 1em;
  }
+ /*modificacion a contacto*/
+ .form-contacto {
+    .redes {
+        h2 {
+            @include titulo (1em,500,center,white)
+        }
+    }
+ }
     }
