@@ -67,18 +67,27 @@ html body {
 }
 
 /*css index*/
+.presentacion {
+  grid-area: pre;
+}
+
+.actividades {
+  grid-area: act;
+}
+
 .body-index {
   height: 210%;
   width: 100%;
   grid-template-columns: 4fr;
-  grid-template-rows: auto 4fr 100vh auto;
+  grid-template-rows: auto 4fr 4fr auto;
   grid-template-areas: "nav nav nav" "main main main" "main main main" "footer footer footer";
 }
 .body-index .main-index {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: 4fr 100vh;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "pre" "act";
 }
 .body-index .main-index .presentacion {
   height: 100%;
@@ -110,24 +119,27 @@ html body {
   flex-direction: column;
   align-items: center;
   background-color: #4a2525;
+  height: 100%;
 }
 .body-index .main-index .actividades h3 {
+  text-align: center;
   font-weight: 700;
   color: white;
   margin-top: 1em;
   text-transform: uppercase;
 }
 .body-index .main-index .actividades .contenido-actividades {
-  height: 100%;
+  height: 90%;
   gap: 1em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
   flex-wrap: wrap;
+  padding: 1em 0 1em 0em;
 }
 .body-index .main-index .actividades .contenido-actividades .card {
-  width: 22%;
-  height: 90%;
+  width: 95%;
+  height: 100%;
 }
 
 /*Css History*/
@@ -258,6 +270,69 @@ html body {
   height: 80px;
 }
 
+.main-reserva {
+  height: 100%;
+  width: 100%;
+}
+.main-reserva .reserva {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  justify-items: center;
+  align-items: center;
+}
+.main-reserva .reserva .formulario-reserva {
+  height: 90%;
+  width: 85%;
+  background-color: rgba(0, 0, 0, 0.47);
+  border-radius: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main-reserva .reserva .formulario-reserva h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: white;
+}
+.main-reserva .reserva .formulario-reserva h2 {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.5em;
+  color: white;
+}
+.main-reserva .reserva .formulario-reserva form {
+  width: 80%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main-reserva .reserva .formulario-reserva form label {
+  font-weight: 600;
+  text-transform: uppercase;
+  color: white;
+}
+.main-reserva .reserva .formulario-reserva form input {
+  width: 90%;
+  margin-bottom: 0.5em;
+}
+.main-reserva .reserva .calendario {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-reserva .reserva .calendario iframe {
+  width: 90%;
+  height: 90%;
+}
+
 /* footer */
 footer {
   display: flex;
@@ -285,7 +360,12 @@ footer .contenido-footer {
   }
   /* modificacion al index */
   .body-index {
-    grid-template-rows: auto 8fr auto;
+    height: 330%;
+    grid-template-rows: auto 4fr 4fr auto;
+  }
+  .body-index .main-index {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas: "pre" "act" "act";
   }
   .body-index .main-index .presentacion {
     flex-direction: column;
@@ -302,6 +382,17 @@ footer .contenido-footer {
   .body-index .main-index .presentacion .tamaño-titulo {
     font-size: 3em;
   }
+  .body-index .main-index .actividades {
+    justify-content: space-evenly;
+  }
+  .body-index .main-index .actividades .contenido-actividades {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    overflow: hidden;
+  }
+  .body-index .main-index .actividades .contenido-actividades .card {
+    height: auto;
+  }
   /* modificacion a rooms */
   .rooms {
     height: auto;
@@ -313,8 +404,8 @@ footer .contenido-footer {
 /*media para 768px*/
 @media screen and (max-width: 768px) {
   /* nueva modificacion al index */
-  .tamaño-titulo {
-    font-size: 2.5em;
+  .body-index .main-index .presentacion .titulo .tamaño-titulo {
+    font-size: 3em;
   }
   /* Modificacion al page contact */
   .form-contacto {
@@ -338,6 +429,24 @@ footer .contenido-footer {
 }
 /*media para 576px*/
 @media screen and (max-width: 576px) {
+  .body-index {
+    height: 530%;
+  }
+  .body-index .main-index {
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas: "pre" "act" "act" "act" "act";
+  }
+  .body-index .main-index .presentacion .img-titulo img {
+    width: 90%;
+  }
+  .body-index .main-index .actividades .contenido-actividades {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    overflow: hidden;
+  }
+  .body-index .main-index .actividades .contenido-actividades .card {
+    height: auto;
+  }
   .tamaño-titulo {
     font-size: 2.5em;
     text-align: center;

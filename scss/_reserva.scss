@@ -1,0 +1,63 @@
+.main-reserva {
+    height: 100%;
+    width: 100%;
+        .reserva {
+            height: 100%;
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            justify-items: center;
+            align-items: center;
+                .formulario-reserva{
+                    height: 90%;
+                    width: 85%;
+                    background-color: rgba(0, 0, 0, 0.47);
+                    border-radius: 5%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    
+                        h1{
+                            text-align: center;
+                            text-transform: uppercase;
+                            font-weight: 700;
+                            color: white;
+                        }
+                        h2 {
+                            text-align: center;
+                            text-transform: uppercase;
+                            font-weight: 700;
+                            font-size: 1.5em;
+                            color: white;
+                        }
+                        form {
+                            width: 80%;
+                            height: 70%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            label {
+                                font-weight: 600;
+                                text-transform: uppercase;
+                                color: white;
+                            }
+                            input {
+                                width: 90%;
+                                margin-bottom: 0.5em;
+                            }
+                        }
+                }
+                .calendario {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                        iframe {
+                            width: 90%;
+                            height: 90%;
+                        }
+                }
+        }
+}
