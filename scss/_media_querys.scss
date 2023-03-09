@@ -161,6 +161,10 @@
         h2 {
             @include titulo (1em,500,center,white)
         }
+        .icon {
+            height: 20px;
+            width: 20px;
+        }
     }
  }
     }
