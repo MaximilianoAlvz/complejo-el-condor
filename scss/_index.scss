@@ -62,9 +62,7 @@
             background-color: #4a2525;
             height: 100%;
             h3 {
-                text-align: center;
-                font-weight: 700;
-                color: white;
+                @include titulo (2em,700,center,white);
                 margin-top: 1em;
                 text-transform: uppercase;
             }

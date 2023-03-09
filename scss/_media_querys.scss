@@ -96,6 +96,18 @@
                     }
             }
     }
+    /*modificacion a reserva*/
+
+.body-reserva {
+    height: 200%;
+    .main-reserva {
+        height: 100%;
+        .reserva {
+            grid-template-columns: 1fr;
+            grid-template-rows: 0.9fr 1.1fr;
+        }
+    }
+}
 }
 
 /*media para 576px*/ 
