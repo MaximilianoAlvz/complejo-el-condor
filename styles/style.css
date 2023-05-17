@@ -40,6 +40,25 @@ html body {
   overflow-x: hidden;
 }
 
+.noValid {
+  border: solid 1.5px red;
+  animation: error 0.5s;
+}
+
+@keyframes error {
+  0% {
+    transform: translate(0, 0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate(-5px, 0);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translate(5px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
 .logo {
   height: 40px;
   width: auto;
@@ -313,7 +332,7 @@ html body {
   color: white;
   text-transform: uppercase;
 }
-.main-reserva .reserva .formulario-reserva form {
+.main-reserva .reserva .formulario-reserva .form {
   width: 80%;
   height: 70%;
   display: flex;
@@ -321,25 +340,73 @@ html body {
   justify-content: center;
   align-items: center;
 }
-.main-reserva .reserva .formulario-reserva form label {
+.main-reserva .reserva .formulario-reserva .form label {
   font-weight: 600;
   text-transform: uppercase;
   color: white;
 }
-.main-reserva .reserva .formulario-reserva form input {
+.main-reserva .reserva .formulario-reserva .form input {
   width: 90%;
   margin-bottom: 0.5em;
 }
-.main-reserva .reserva .calendario {
+.main-reserva .reserva .formulario-reserva .form .btn-reserva {
+  width: 90%;
+}
+.main-reserva .reserva .datos-reserva {
+  width: 80%;
+  height: 90%;
+  background-color: rgba(0, 0, 0, 0.47);
+  border-radius: 5%;
+  display: grid;
+  grid-template-rows: 1fr 2fr 0.5fr 0.5fr;
+  align-items: center;
+  justify-items: center;
+}
+.main-reserva .reserva .datos-reserva h2 {
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
   width: 100%;
-  height: 100%;
+}
+.main-reserva .reserva .datos-reserva .listaReservas {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  height: 80%;
+  width: 90%;
+  padding: 0;
+  margin: 0;
+}
+.main-reserva .reserva .datos-reserva .listaReservas .datoReserva {
+  color: white;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+.main-reserva .reserva .datos-reserva .botonesReservas {
+  width: 90%;
+  gap: 1em;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.main-reserva .reserva .calendario iframe {
-  width: 90%;
-  height: 90%;
+.main-reserva .reserva .datos-reserva .botonesReservas .eliminarReserva {
+  width: 100%;
+  background-color: rgba(169, 4, 4, 0.826);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.main-reserva .reserva .datos-reserva .botonesReservas .confirmarReserva {
+  width: 100%;
+  background-color: rgba(0, 226, 0, 0.724);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.main-reserva .reserva .datos-reserva .total {
+  color: white;
 }
 
 /* footer */
