@@ -13,18 +13,25 @@ const formReserva = document.getElementById("formReserva");
 ///variables para validacion
 let nombreValido;
 let numeroValido;
+let entradaValido;
+let salidaValido;
+
 ///acciones de la reserva
 let botonReserva = document.getElementById("btn-reserva");
 botonReserva.addEventListener("click", function (e) {
     e.preventDefault();
-    if (nombreValido && numeroValido) {
+    if (nombreValido && numeroValido && entradaValido) {
     crearReserva();
     mostrarReservas();
     precioReserva();
     limpiarForm(formReserva);
     console.log(reservas);
     }else {
-        alert("corrija los campos seleccionados")
+        validarEntrada();
+        validarSalida();
+        validarNombre();
+        validarNumero();
+        alert("Asegurese de completar correctamente los campos")
     }
 })
 const crearReserva = () => {
@@ -121,7 +128,9 @@ nombre.addEventListener("change", function() {
 numero.addEventListener("change", function () {
     validarNumero();
 })
-
+entradaInput.addEventListener("change", function () {
+    validarEntrada();
+})
 const validarNumero = () =>{
     let regexNumero = /^\+?\d{10,13}$/;
     let numeroTest = regexNumero.test(numero.value);
@@ -148,3 +157,26 @@ const validarNombre = () => {
 
 }
 
+const validarEntrada = () => {
+    let regexEntrada = /^\d{4}-\d{2}-\d{2}$/;
+    let entradaTest = regexEntrada.test(entradaInput.value);
+    if(!entradaTest) {
+        entradaInput.classList.add("noValid");
+        entradaValido = false;
+    }else {
+        entradaInput.classList.remove("noValid");
+        entradaValido = true;
+    }   
+}
+
+const validarSalida= () => {
+    let regexSalida = /^\d{4}-\d{2}-\d{2}$/;
+    let salidaTest = regexSalida.test(salidaInput.value);
+    if(!salidaTest) {
+        salidaInput.classList.add("noValid");
+        salidaValido = false;
+    }else {
+        salidaInput.classList.remove("noValid");
+        salidaValido = true;
+    }   
+}
