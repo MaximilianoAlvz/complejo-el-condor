@@ -136,7 +136,7 @@ const validarNumero = () =>{
 
 const validarNombre = () => {
 
-    let regexNombre = /^[a-zA-Z]+$/;
+    let regexNombre = /^[a-zA-Z]+\s?[a-zA-Z]*$/;
     let nombreTest = regexNombre.test(nombre.value);
     if (!nombreTest) {
         nombre.classList.add("noValid");
