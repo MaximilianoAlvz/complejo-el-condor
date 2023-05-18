@@ -15,17 +15,22 @@ let nombreValido;
 let numeroValido;
 let entradaValido;
 let salidaValido;
+let reservaStatus = true;
 
 ///acciones de la reserva
 let botonReserva = document.getElementById("btn-reserva");
 botonReserva.addEventListener("click", function (e) {
     e.preventDefault();
     if (nombreValido && numeroValido && entradaValido) {
+        if (reservaStatus){
     crearReserva();
     mostrarReservas();
     precioReserva();
     limpiarForm(formReserva);
-    console.log(reservas);
+    reservaVacia();
+    console.log(reservas);}else {
+        alert("Antes de realizar una nueva reserva borre su reserva anterior")
+    }
     }else {
         validarEntrada();
         validarSalida();
@@ -108,6 +113,7 @@ const borrarReserva = (index) => {
         listaReservas.innerHTML = "";
         botonesReservas.innerHTML = "";
         precioTotal.innerHTML = "";
+        reservaVacia();
     }
 
 }
@@ -179,4 +185,14 @@ const validarSalida= () => {
         salidaInput.classList.remove("noValid");
         salidaValido = true;
     }   
+}
+
+/// Validacion reserva vacia
+
+const reservaVacia = () => {
+    if (reservas.length >= 1){
+        reservaStatus = false;
+    }else {
+        reservaStatus = true;
+    }
 }
