@@ -11,3 +11,13 @@ class Reserva {
         this.salida = salida;
     }
 }
+
+class cuenta {
+    mail
+    contraseña
+
+    constructor (mail, contraseña) {
+        this.mail = mail;
+        this.contraseña = contraseña;
+    }
+}

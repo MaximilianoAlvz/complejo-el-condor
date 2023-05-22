@@ -1,0 +1,47 @@
+.bodySesion {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+        .formInicioSesion {
+            width: 40%;
+            height: 70%;
+            background-color: rgba(0, 0, 0, 0.502);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+                p {
+                    font-weight: 700;
+                    color: white;
+                }
+                input {
+                    width: 80%;
+                    height: 8%;
+                }
+        }
+        .formRegistro {
+            width: 40%;
+            height: 70%;
+            background-color: rgba(0, 0, 0, 0.502);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+                p {
+                    font-weight: 700;
+                    color: white;
+                }
+                input {
+                    width: 80%;
+                    height: 8%;
+                }
+        
+        }
+        .formActivo {
+            display: flex;
+        }
+}
