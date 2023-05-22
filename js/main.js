@@ -1,6 +1,7 @@
 const precioDia = 13000;
 const miliDia = 86400000;
 const reservas = [];
+const reservasConfirmadas = JSON.parse(localStorage.getItem("reservasConfirmadas")) || [];
 
 /// Elementos del DOM
 const nombre = document.getElementById("nombre");
@@ -9,29 +10,44 @@ const entradaInput = document.getElementById("fechaEntrada");
 const salidaInput = document.getElementById("fechaSalida");
 const precioTotal = document.getElementById("total");
 const formReserva = document.getElementById("formReserva");
+let listaReservas = document.getElementById("listaReservas");
 
 ///variables para validacion
 let nombreValido;
 let numeroValido;
 let entradaValido;
 let salidaValido;
-let reservaStatus = true;
 
 ///acciones de la reserva
+///mostrar reservas al inicio
+document.addEventListener("DOMContentLoaded", function () {
+    reservasInicio();
+})
+const reservasInicio = () => {
+    if (reservasConfirmadas.length >= 1) {
+        listaReservas.innerHTML = "";
+        mostrarReservasConfirmadas();
+    } else {
+        let reservaNula = document.createElement("li");
+        reservaNula.innerHTML = "Todavia no ha realizado ninguna reserva";
+        listaReservas.appendChild(reservaNula);
+    }
+}
+
+
 let botonReserva = document.getElementById("btn-reserva");
 botonReserva.addEventListener("click", function (e) {
     e.preventDefault();
     if (nombreValido && numeroValido && entradaValido) {
-        if (reservaStatus){
-    crearReserva();
-    mostrarReservas();
-    precioReserva();
-    limpiarForm(formReserva);
-    reservaVacia();
-    console.log(reservas);}else {
-        alert("Antes de realizar una nueva reserva borre su reserva anterior")
-    }
-    }else {
+        if (reservaVacia() && reservaConfirmadaVacia()) {
+            crearReserva();
+            mostrarReservas();
+            precioReserva();
+            limpiarForm(formReserva);
+        } else {
+            alert("Antes de realizar una nueva reserva borre su reserva anterior")
+        }
+    } else {
         validarEntrada();
         validarSalida();
         validarNombre();
@@ -54,7 +70,7 @@ const limpiarForm = (form) => {
 }
 
 const mostrarReservas = () => {
-    let listaReservas = document.getElementById("listaReservas");
+    listaReservas.innerHTML = "";
 
     for (let i = 0; i < reservas.length; i++) {
 
@@ -114,6 +130,7 @@ const borrarReserva = (index) => {
         botonesReservas.innerHTML = "";
         precioTotal.innerHTML = "";
         reservaVacia();
+        reservasInicio();
     }
 
 }
@@ -121,13 +138,14 @@ const borrarReserva = (index) => {
 const confirmarReserva = () => {
     let confirmacionReserva = confirm("¿Seguro que desea confirmar esta reserva?");
     if (confirmacionReserva) {
+        localStorage.setItem("reservasConfirmadas", JSON.stringify(reservas));
         alert("¡Su reserva fue confirmada satisfactoriamente!")
         location.reload();
     }
 }
 
 ///Funciones de validacion de inputs
-nombre.addEventListener("change", function() {
+nombre.addEventListener("change", function () {
     validarNombre();
 });
 
@@ -137,13 +155,13 @@ numero.addEventListener("change", function () {
 entradaInput.addEventListener("change", function () {
     validarEntrada();
 })
-const validarNumero = () =>{
+const validarNumero = () => {
     let regexNumero = /^\+?\d{10,13}$/;
     let numeroTest = regexNumero.test(numero.value);
     if (!numeroTest) {
         numero.classList.add("noValid");
         numeroValido = false;
-    }else {
+    } else {
         numero.classList.remove("noValid");
         numeroValido = true;
     }
@@ -156,7 +174,7 @@ const validarNombre = () => {
     if (!nombreTest) {
         nombre.classList.add("noValid");
         nombreValido = false;
-    }else {
+    } else {
         nombre.classList.remove("noValid");
         nombreValido = true;
     }
@@ -166,33 +184,91 @@ const validarNombre = () => {
 const validarEntrada = () => {
     let regexEntrada = /^\d{4}-\d{2}-\d{2}$/;
     let entradaTest = regexEntrada.test(entradaInput.value);
-    if(!entradaTest) {
+    if (!entradaTest) {
         entradaInput.classList.add("noValid");
         entradaValido = false;
-    }else {
+    } else {
         entradaInput.classList.remove("noValid");
         entradaValido = true;
-    }   
+    }
 }
 
-const validarSalida= () => {
+const validarSalida = () => {
     let regexSalida = /^\d{4}-\d{2}-\d{2}$/;
     let salidaTest = regexSalida.test(salidaInput.value);
-    if(!salidaTest) {
+    if (!salidaTest) {
         salidaInput.classList.add("noValid");
         salidaValido = false;
-    }else {
+    } else {
         salidaInput.classList.remove("noValid");
         salidaValido = true;
-    }   
+    }
 }
 
 /// Validacion reserva vacia
 
 const reservaVacia = () => {
-    if (reservas.length >= 1){
+    let reservaStatus;
+    if (reservas.length >= 1) {
         reservaStatus = false;
-    }else {
+    } else {
         reservaStatus = true;
+    } return reservaStatus;
+}
+const reservaConfirmadaVacia = () => {
+    let reservaStatus2;
+    if (reservasConfirmadas.length >= 1) {
+        reservaStatus2 = false;
+    }else {
+        reservaStatus2 = true;
+    } return reservaStatus2;
+}
+
+/// Mostrando reservas confirmadas
+const mostrarReservasConfirmadas = () => {
+    listaReservas.innerHTML = "";
+
+    for (let i = 0; i < reservasConfirmadas.length; i++) {
+
+        let ReservaNombre = document.createElement("li");
+        ReservaNombre.classList.add("datoReserva")
+        ReservaNombre.innerHTML = "NOMBRE: " + reservasConfirmadas[i].nombre;
+        listaReservas.appendChild(ReservaNombre);
+
+        let ReservaNumero = document.createElement("li");
+        ReservaNumero.classList.add("datoReserva")
+        ReservaNumero.innerHTML = "NUMERO: " + reservasConfirmadas[i].numero;
+        listaReservas.appendChild(ReservaNumero);
+
+        let ReservaEntrada = document.createElement("li");
+        ReservaEntrada.classList.add("datoReserva")
+        ReservaEntrada.innerHTML = "ENTRADA : " + reservasConfirmadas[i].entrada;
+        listaReservas.appendChild(ReservaEntrada);
+
+        let ReservaSalida = document.createElement("li");
+        ReservaSalida.classList.add("datoReserva")
+        ReservaSalida.innerHTML = "SALIDA: " + reservasConfirmadas[i].salida;
+        listaReservas.appendChild(ReservaSalida);
+
+    }
+
+    let botonesReservas = document.getElementById("botonesReservas");
+    let borrarReservaBtn = document.createElement("button");
+    borrarReservaBtn.innerHTML = "Eliminar Reserva";
+    borrarReservaBtn.classList.add("eliminarReserva");
+    botonesReservas.appendChild(borrarReservaBtn);
+    borrarReservaBtn.addEventListener("click", function () {
+        borrarReservaConfirmada(0);
+    })
+}
+
+const borrarReservaConfirmada = (index) => {
+    let confirmacionBorrarReserva = confirm("¿Seguro que desea eliminar su reserva?")
+    if (confirmacionBorrarReserva) {
+        localStorage.removeItem("reservasConfirmadas")
+        listaReservas.innerHTML = "";
+        botonesReservas.innerHTML = "";
+        precioTotal.innerHTML = "";
+        location.reload();
     }
 }
