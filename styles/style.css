@@ -39,7 +39,9 @@ html body {
   grid-template-areas: "nav nav nav" "main main main" "footer footer footer";
   overflow-x: hidden;
 }
-
+.botonesAlerta {
+  gap: 1em;
+}
 .noValid {
   border: solid 1.5px red;
   animation: error 0.5s;

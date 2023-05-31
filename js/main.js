@@ -123,25 +123,51 @@ const precioReserva = () => {
 
 const borrarReserva = (index) => {
 
-    let confirmacionBorrarReserva = confirm("¿Seguro que desea eliminar su reserva?")
-    if (confirmacionBorrarReserva) {
-        reservas.splice(index, 1);
-        listaReservas.innerHTML = "";
-        botonesReservas.innerHTML = "";
-        precioTotal.innerHTML = "";
-        reservaVacia();
-        reservasInicio();
-    }
-
+    Swal.fire({
+        title: '¿Estas seguro que quieres borrar esta reserva?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Si',
+        confirmButtonColor: "red",
+        cancelButtonText: `No`,
+        customClass: {
+            actions: "botonesAlerta"
+        }
+    }).then ((result) => {
+        if (result.isConfirmed) {
+            reservas.splice(index, 1);
+            listaReservas.innerHTML = "";
+            botonesReservas.innerHTML = "";
+            precioTotal.innerHTML = "";
+            reservaVacia();
+            reservasInicio();
+        }
+    })
 }
 
 const confirmarReserva = () => {
-    let confirmacionReserva = confirm("¿Seguro que desea confirmar esta reserva?");
-    if (confirmacionReserva) {
-        localStorage.setItem("reservasConfirmadas", JSON.stringify(reservas));
-        alert("¡Su reserva fue confirmada satisfactoriamente!")
-        location.reload();
-    }
+    Swal.fire({
+        title: '¿Estas seguro que quieres confirmar esta reserva?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Si',
+        confirmButtonColor: "green",
+        cancelButtonText: `No`,
+        customClass: {
+            actions: "botonesAlerta"
+        }
+    }).then ((result) => {
+        if (result.isConfirmed) {
+            localStorage.setItem("reservasConfirmadas", JSON.stringify(reservas));
+            Swal.fire ({
+                title: "Su reserva fue confirmada con exito",
+                icon: "success",
+                confirmButtonColor: "green",
+            }).then (() => {
+                window.location.reload();
+            })
+        }
+    })
 }
 
 ///Funciones de validacion de inputs
@@ -263,12 +289,23 @@ const mostrarReservasConfirmadas = () => {
 }
 
 const borrarReservaConfirmada = (index) => {
-    let confirmacionBorrarReserva = confirm("¿Seguro que desea eliminar su reserva?")
-    if (confirmacionBorrarReserva) {
-        localStorage.removeItem("reservasConfirmadas")
-        listaReservas.innerHTML = "";
-        botonesReservas.innerHTML = "";
-        precioTotal.innerHTML = "";
-        location.reload();
-    }
+    Swal.fire({
+        title: '¿Estas seguro que quieres borrar esta reserva?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Si',
+        confirmButtonColor: "red",
+        cancelButtonText: `No`,
+        customClass: {
+            actions: "botonesAlerta"
+        }
+    }).then ((result) => {
+        if (result.isConfirmed) {
+            localStorage.removeItem("reservasConfirmadas")
+            listaReservas.innerHTML = "";
+            botonesReservas.innerHTML = "";
+            precioTotal.innerHTML = "";
+            location.reload();
+        }
+    })
 }
