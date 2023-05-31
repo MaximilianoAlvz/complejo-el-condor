@@ -19,6 +19,19 @@ let entradaValido;
 let salidaValido;
 
 ///acciones de la reserva
+///Funcion para obtener la fecha en formato dd/mm/aaaa
+const fechaFormateada = (fecha) => {
+    let dia = fecha.getDay()
+    let mes = fecha.getMonth() + 1;
+    let año = fecha.getFullYear();
+    if (dia < 10) {
+        dia = "0" + dia;
+    }
+    if (mes < 10) {
+        mes = "0" + mes;
+    }
+    return dia + "/" + mes + "/" + año; 
+}
 ///mostrar reservas al inicio
 document.addEventListener("DOMContentLoaded", function () {
     reservasInicio();
@@ -30,6 +43,7 @@ const reservasInicio = () => {
     } else {
         let reservaNula = document.createElement("li");
         reservaNula.innerHTML = "Todavia no ha realizado ninguna reserva";
+        reservaNula.classList.add("datoReserva")
         listaReservas.appendChild(reservaNula);
     }
 }
@@ -85,13 +99,15 @@ const mostrarReservas = () => {
         listaReservas.appendChild(ReservaNumero);
 
         let ReservaEntrada = document.createElement("li");
-        ReservaEntrada.classList.add("datoReserva")
-        ReservaEntrada.innerHTML = "ENTRADA : " + reservas[i].entrada;
+        ReservaEntrada.classList.add("datoReserva");
+        let mostrarEntrada = fechaFormateada(reservas[i].entrada);
+        ReservaEntrada.innerHTML = "ENTRADA : " + mostrarEntrada;
         listaReservas.appendChild(ReservaEntrada);
 
         let ReservaSalida = document.createElement("li");
         ReservaSalida.classList.add("datoReserva")
-        ReservaSalida.innerHTML = "SALIDA: " + reservas[i].salida;
+        let mostrarSalida = fechaFormateada(reservas[i].salida);
+        ReservaSalida.innerHTML = "SALIDA: " + mostrarSalida;
         listaReservas.appendChild(ReservaSalida);
 
     }
@@ -267,13 +283,17 @@ const mostrarReservasConfirmadas = () => {
         listaReservas.appendChild(ReservaNumero);
 
         let ReservaEntrada = document.createElement("li");
-        ReservaEntrada.classList.add("datoReserva")
-        ReservaEntrada.innerHTML = "ENTRADA : " + reservasConfirmadas[i].entrada;
+        ReservaEntrada.classList.add("datoReserva");
+        let entradaSinFormatear = new Date (reservasConfirmadas[i].entrada)
+        let mostrarEntradaConfirmada = fechaFormateada(entradaSinFormatear);
+        ReservaEntrada.innerHTML = "ENTRADA : " + mostrarEntradaConfirmada;
         listaReservas.appendChild(ReservaEntrada);
 
         let ReservaSalida = document.createElement("li");
-        ReservaSalida.classList.add("datoReserva")
-        ReservaSalida.innerHTML = "SALIDA: " + reservasConfirmadas[i].salida;
+        ReservaSalida.classList.add("datoReserva");
+        let salidaSinFormatear = new Date (reservasConfirmadas[i].salida)
+        let mostrarSalidaConfirmada = fechaFormateada(salidaSinFormatear);
+        ReservaSalida.innerHTML = "SALIDA: " + mostrarSalidaConfirmada;
         listaReservas.appendChild(ReservaSalida);
 
     }
