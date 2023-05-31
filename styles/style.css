@@ -21,6 +21,10 @@ footer {
   grid-area: footer;
 }
 
+.botonesAlerta {
+  gap: 1em;
+}
+
 html {
   width: 100%;
   height: 100%;
@@ -39,9 +43,7 @@ html body {
   grid-template-areas: "nav nav nav" "main main main" "footer footer footer";
   overflow-x: hidden;
 }
-.botonesAlerta {
-  gap: 1em;
-}
+
 .noValid {
   border: solid 1.5px red;
   animation: error 0.5s;
@@ -300,7 +302,7 @@ html body {
 }
 
 .main-reserva {
-  height: 100%;
+  height: 82vh;
   width: 100%;
 }
 .main-reserva .reserva {
@@ -476,6 +478,9 @@ footer .contenido-footer {
 
 /*comienzo de media querys*/
 @media screen and (max-width: 992px) {
+  .main-reserva {
+    height: 100%;
+  }
   /* modificacion para que funcione la barra */
   body {
     grid-template-rows: auto 4fr auto;

@@ -1,5 +1,8 @@
 /*comienzo de media querys*/
 @media screen and (max-width: 992px) {
+    .main-reserva {
+        height: 100%;
+    }
     /* modificacion para que funcione la barra */
     body {
         grid-template-rows: auto 4fr auto;
