@@ -51,6 +51,8 @@ const crearCuenta = () => {
 ///Funciones de validacion 
 ///variables validacion
 let mailValidado;
+let contraseñaCorrecto;
+let repetirContraseñaValidacion;
 const validacionMail = () => {
     let regexMail = /^[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z]+$/;
     let mailValido = regexMail.test(mailRegistro.value);
@@ -63,8 +65,35 @@ const validacionMail = () => {
     }
 }
 
+const validacionContraseña = () => {
+    let regexContraseña = /^(?=.*[A-Z]).{8,16}$/;
+    let contraseñaValida = regexContraseña.test(contraRegistro.value);
+    if (!contraseñaValida) {
+        contraRegistro.classList.add("noValid");
+        contraseñaCorrecto = false;
+    }else {
+        contraRegistro.classList.remove("noValid");
+        contraseñaCorrecto = true;
+    }
+}
+
+const validacionConfirmarContraseña = () => {
+    if (confirmarContra.value === contraRegistro.value) {
+        confirmarContra.classList.remove("noValid");
+        repetirContraseñaValidacion = true;
+    }else {
+        confirmarContra.classList.add("noValid");
+        repetirContraseñaValidacion = false;
+    }
+}
 /// Eventos de validacion
 
 mailRegistro.addEventListener("change", function (){
     validacionMail();
+})
+contraRegistro.addEventListener("change", function () {
+    validacionContraseña();
+})
+confirmarContra.addEventListener("change", function () {
+    validacionConfirmarContraseña();
 })
