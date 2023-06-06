@@ -24,7 +24,10 @@ btnCrearCuenta.addEventListener("click",function () {
 ///Eventos click de los botones del registro
 
 btnRegistro.addEventListener("click", function () {
-    crearCuenta();
+    if (validacionMail(mailRegistro) && validacionContraseña() && validacionConfirmarContraseña()){
+    crearCuenta();}else {
+        alert("Corrija los campos seleccionados");
+    }
 })
 
 btnIniciarSesionRegistro.addEventListener("click", function () {
@@ -53,15 +56,15 @@ const crearCuenta = () => {
 let mailValidado;
 let contraseñaCorrecto;
 let repetirContraseñaValidacion;
-const validacionMail = () => {
+const validacionMail = (casillaMail) => {
     let regexMail = /^[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z]+$/;
-    let mailValido = regexMail.test(mailRegistro.value);
+    let mailValido = regexMail.test(casillaMail.value);
     if (!mailValido) {
-        mailRegistro.classList.add("noValid");
-        mailValidado = false;
+        casillaMail.classList.add("noValid");
+        return false;
     }else {
-        mailRegistro.classList.remove("noValid");
-        mailValidado = true;
+        casillaMail.classList.remove("noValid");
+        return true;
     }
 }
 
@@ -70,26 +73,26 @@ const validacionContraseña = () => {
     let contraseñaValida = regexContraseña.test(contraRegistro.value);
     if (!contraseñaValida) {
         contraRegistro.classList.add("noValid");
-        contraseñaCorrecto = false;
+        return false;
     }else {
         contraRegistro.classList.remove("noValid");
-        contraseñaCorrecto = true;
+        return true;
     }
 }
 
 const validacionConfirmarContraseña = () => {
     if (confirmarContra.value === contraRegistro.value) {
         confirmarContra.classList.remove("noValid");
-        repetirContraseñaValidacion = true;
+        return true;
     }else {
         confirmarContra.classList.add("noValid");
-        repetirContraseñaValidacion = false;
+        return false;
     }
 }
 /// Eventos de validacion
 
 mailRegistro.addEventListener("change", function (){
-    validacionMail();
+    validacionMail(mailRegistro);
 })
 contraRegistro.addEventListener("change", function () {
     validacionContraseña();
