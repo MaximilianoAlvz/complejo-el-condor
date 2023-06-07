@@ -7,12 +7,12 @@ const options = {
 		'X-RapidAPI-Host': 'yahoo-weather5.p.rapidapi.com'
 	}
 };
-let objetoClima;
-fetch(url,options).then((Response) => Response.json()).then((json) => 
-    objetoClima = json
-).then(() => {
+const pedirClima = async () =>{
+	const solicitudClima = await fetch(url,options);
+	let clima = await solicitudClima.json();
+
 	Toastify({
-		text: "La temperatura maxima para hoy es de: " + objetoClima.forecasts[0].high + "°",
+		text: "La temperatura maxima para hoy es de: " + clima.forecasts[0].high + "°",
 		duration: 5000,
 		newWindow: false,
 		close: true,
@@ -22,5 +22,6 @@ fetch(url,options).then((Response) => Response.json()).then((json) =>
 		style: {
 		background: "linear-gradient(to right, #00b09b, #96c93d)",
 		}}).showToast();
-})
+}
 
+pedirClima();
